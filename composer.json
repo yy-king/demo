@@ -1,0 +1,19 @@
+{
+    "name": "svr/auth_login",
+    "description": "a demo problem about auth and login",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wy",
+            "email": "wanyou@yuewen.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload":{
+    	"psr-4":{
+    	   "Demo\\":"../demo"
+    	}
+    }
+}
