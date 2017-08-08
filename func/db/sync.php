@@ -17,12 +17,14 @@ class sync
 
     public function __construct()
     {
-        $this->con = new PDO("mysql:host=localhost;dbname=demo05", "root", "root", [
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES `utf8`',
-            PDO::ATTR_PERSISTENT => TRUE,
-        ]);
-        $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->con->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
+        if (is_null($this->con)) {
+            $this->con = new PDO("mysql:host=localhost;dbname=demo05", "root", "root", [
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES `utf8`',
+                PDO::ATTR_PERSISTENT => TRUE,
+            ]);
+            $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->con->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
+        }
         return $this;
     }
 
