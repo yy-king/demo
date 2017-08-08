@@ -1,10 +1,8 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Demo\func\session;
-
-$obj = new session();
-$obj->setSession();
+$obj = new \Demo\func\auth();
+$obj->getUserInfo();
 
 ?>
 

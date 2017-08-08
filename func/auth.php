@@ -12,7 +12,9 @@ use Demo\func\request\Request;
 
 class auth
 {
-    public static function check()
+    public $login_session;
+
+    public static function setSession()
     {
         $username = Request::req('username');
         $password = Request::req('password');
@@ -31,6 +33,22 @@ class auth
             return true;
         } else {
             return "用户名或密码不正确 ";
+        }
+    }
+
+    public function getUserInfo()
+    {
+        session_start();
+        $user_check = $_SESSION['login_user'];
+
+        $db = new sync();
+        $ses_sql = $db->query("select username from login where username='$user_check'");
+
+        $row = $ses_sql[0];
+        $this->login_session = $row['USERNAME'];
+
+        if (!isset($this->login_session)) {
+            header('Location:index.php');
         }
     }
 

@@ -20,7 +20,7 @@ class login
             $this->error = "用户名或密码不可以为空";
             return false;
         } else {
-            $ret = auth::check();
+            $ret = auth::setSession();
             $ret === true ? header("location: profile.php") : $this->error = $ret;
             return true;
         }
