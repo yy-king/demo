@@ -33,4 +33,12 @@ class auth
             return "用户名或密码不正确 ";
         }
     }
+
+    public static function Auth()
+    {
+        if (isset($_SESSION['login_user'])) {
+            header("location:profile.php");
+        }
+        return false;
+    }
 }

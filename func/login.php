@@ -13,8 +13,6 @@ class login
 
     public function loginIn($request)
     {
-        session_start();
-
         $userName = $request->input('username');
         $password = $request->input('password');
 

@@ -1,13 +1,11 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Demo\func\login;
+session_start();
 
-$obj = new login();
-$obj->loginIn(new Demo\func\request\Request);
-
-if (isset($_SESSION['login_user'])) {
-    header("location:profile.php");
+if (!\Demo\func\auth::Auth()) {
+    $obj = new  \Demo\func\login();
+    $obj->loginIn(new Demo\func\request\Request);
 }
 ?>
 
