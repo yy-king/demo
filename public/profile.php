@@ -1,9 +1,5 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-
-$obj = new \Demo\func\auth();
-$obj->getUserInfo();
-
 ?>
 
 <html>
@@ -15,7 +11,7 @@ $obj->getUserInfo();
     <b id="welcome">欢迎 :
         <i>
             <?php
-            echo $obj->login_session;
+            echo '用户' . Demo\func\auth::getUserInfo();
             ?>
         </i>
     </b>

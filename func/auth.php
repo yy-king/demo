@@ -12,8 +12,6 @@ use Demo\func\request\Request;
 
 class auth
 {
-    public $login_session;
-
     public static function setSession()
     {
         $username = Request::req('username');
@@ -36,7 +34,7 @@ class auth
         }
     }
 
-    public function getUserInfo()
+    public static function getUserInfo()
     {
         session_start();
         $user_check = $_SESSION['login_user'];
@@ -45,10 +43,12 @@ class auth
         $ses_sql = $db->query("select username from login where username='$user_check'");
 
         $row = $ses_sql[0];
-        $this->login_session = $row['USERNAME'];
+        $login_session = $row['USERNAME'];
 
-        if (!isset($this->login_session)) {
+        if (!isset($login_session)) {
             header('Location:index.php');
+        }else{
+            return $login_session;
         }
     }
 
